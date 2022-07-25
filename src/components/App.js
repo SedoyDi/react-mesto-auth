@@ -1,7 +1,7 @@
 import api from "../utils/api";
 import Main from "./Main";
 import LogIn from "./LogIn";
-import SignUp from "./SignUp";
+import Register from "./Register";
 import Header from "./Header";
 import Footer from "./Footer";
 import ImagePopup from "./ImagePopup";
@@ -153,7 +153,7 @@ function App() {
             />
           </Route>
           <Route path={"/sign-up"}>
-          <SignUp />
+          <Register />
           </Route>
           <Route path={"/sign-in"}>
           <LogIn />
