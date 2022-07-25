@@ -60,3 +60,11 @@
 @import url(./blocks/form/__submit_inactive/form__submit_inactive.css);
 @import url(./blocks/form/__input-error/_place-input_position/form__input-error_place-input_position.css);
 @import url(./blocks/form/__input-error/_place-link-input_position/form__input-error_place-link-input_position.css);
+/*---Login---*/
+@import url(./blocks/login/login.css);
+@import url(./blocks/login/__form/login__form.css);
+@import url(./blocks/login/__title/login__title.css);
+@import url(./blocks/login/__input/login__input.css);
+@import url(./blocks/login/__input/_email_position/login__input_email_position.css);
+@import url(./blocks/login/__input/_password_position/login__input_password_position.css);
+@import url(./blocks/login/__submit-button/login__submit-button.css);
