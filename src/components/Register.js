@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {Link} from "react-router-dom";
 
 function Register() {
   return (
@@ -18,7 +19,9 @@ function Register() {
           <button type="submit" className="register__submit-button">
             Зарегистрироваться
           </button>
-          <a className="register__linck">Уже зарегистрированы? Войти</a>
+          <Link className="register__link" to="/sign-in">
+            Уже зарегистрированы? Войти
+          </Link>
         </form>
       </div>
   );
