@@ -1,14 +1,14 @@
 import api from "../utils/api";
 import Main from "./Main";
 import LogIn from "./LogIn";
-import Register from "./Register";
 import Header from "./Header";
 import Footer from "./Footer";
+import Register from "./Register";
 import ImagePopup from "./ImagePopup";
 import AddPlacePopup from "./AddPlacePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import EditProfilePopup from "./EditProfilePopup";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useState, useEffect } from "react";
 
@@ -125,6 +125,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
           <Header />
+          <Switch>
           <Route exact path={"/"}>
             <Main
               onEditAvatar={handleEditAvatarClick}
@@ -152,15 +153,17 @@ function App() {
               onUpdateAvatar={handleUpdateAvatar}
             />
           </Route>
-          <Route path={"/sign-up"}>
-          <Register />
+          <Route path={"/signup"}>
+            <Register />
           </Route>
-          <Route path={"/sign-in"}>
-          <LogIn />
+          <Route path={"/signin"}>
+            <LogIn />
           </Route>
-          <Footer />
+          </Switch>
+        <Footer />
       </div>
     </CurrentUserContext.Provider>
+
   );
 }
 
