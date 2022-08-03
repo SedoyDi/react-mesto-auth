@@ -4,6 +4,7 @@ import LogIn from "./LogIn";
 import Header from "./Header";
 import Footer from "./Footer";
 import Register from "./Register";
+import InfoTooltip from "./InfoTooltip";
 import ImagePopup from "./ImagePopup";
 import AddPlacePopup from "./AddPlacePopup";
 import EditAvatarPopup from "./EditAvatarPopup";

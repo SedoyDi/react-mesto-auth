@@ -78,3 +78,7 @@
 @import url(./blocks/register/__input/_password_position/register__input_password_position.css);
 @import url(./blocks/register/__submit-button/register__submit-button.css);
 @import url(./blocks/register/__link/register__link.css);
+/*---InfoTooltip---*/
+@import url(./blocks/info-tooltip/info-tooltip.css);
+@import url(./blocks/info-tooltip/__icon/info-tooltip__icon.css);
+@import url(./blocks/info-tooltip/__massage/info-tooltip__massage.css);
