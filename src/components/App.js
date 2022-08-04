@@ -125,7 +125,9 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
-          <Header />
+          <Header
+          email={"lflf@mail.ru"}
+           />
           <Switch>
           <Route exact path={"/"}>
             <Main

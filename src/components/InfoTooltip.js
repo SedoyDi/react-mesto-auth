@@ -1,3 +1,4 @@
+import React from "react";
 import icon from "../image/Infotooltip/iconYes.jpg";
 import unIcon from "../image/Infotooltip/iconNo.jpg";
 
