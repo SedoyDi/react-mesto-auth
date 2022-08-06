@@ -7,5 +7,4 @@
 
 ### Ознакомьтесь
 
-Как же попасть в это [Место](https://sedoydi.github.io/mesto-react/)? :point_left: Заходи! :stuck_out_tongue_winking_eye:
-
+Как же попасть в это [Место](https://sedoydi.github.io/react-mesto-auth/)? :point_left: Заходи! :stuck_out_tongue_winking_eye:
