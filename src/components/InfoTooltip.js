@@ -3,7 +3,9 @@ import icon from "../image/Infotooltip/iconYes.jpg";
 import unIcon from "../image/Infotooltip/iconNo.jpg";
 
 function InfoTooltip (props) {
-    const className = `popup popup_opened`;
+    const className = props.isOpen
+    ? `popup popup_opened`
+    : `popup`;
     function handleOverlayClick(evt) {
         if (evt.target === evt.currentTarget) {
           props.onClose();
