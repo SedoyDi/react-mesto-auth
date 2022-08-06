@@ -1,10 +1,10 @@
-import React from 'react';
-import Card from './Card';
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import React from "react";
+import Card from "./Card";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Main(props) {
   const currentUser = React.useContext(CurrentUserContext);
-  
+
   function handleCardLike(card) {
     props.onCardLike(card);
   }
@@ -12,7 +12,7 @@ function Main(props) {
   function handleCardDelete(card) {
     props.onCardDelete(card);
   }
-  
+
   return (
     <main>
       <section className="profile">

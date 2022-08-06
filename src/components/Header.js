@@ -13,7 +13,7 @@ function Header(props) {
             </p>
             <Link
               className="header__authorization-link header__authorization-container_link_style"
-              to='/signin'
+              to="/signin"
               onClick={props.logOut}
             >
               Выйти

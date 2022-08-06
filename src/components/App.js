@@ -1,5 +1,5 @@
 import api from "../utils/api";
-import {registration, authorization, checkToken } from "../utils/api";
+import { registration, authorization, checkToken } from "../utils/api";
 import Main from "./Main";
 import LogIn from "./LogIn";
 import Header from "./Header";
@@ -28,8 +28,8 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userEmail, setUserEmail] = useState('');
-  const [registerResult, setRegisterResult] = useState(false)
+  const [userEmail, setUserEmail] = useState("");
+  const [registerResult, setRegisterResult] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -56,51 +56,53 @@ function App() {
   }
   function handleRegister(registerInfo) {
     registration(registerInfo)
-    .then(() => {
-      setRegisterResult(true);
-      setIsInfoTooltipOpen(true);
-    })
-    .catch((err) => {
-      console.log(err);
-      setRegisterResult(false);
-      setIsInfoTooltipOpen(true);
-    })
+      .then(() => {
+        setRegisterResult(true);
+        setIsInfoTooltipOpen(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        setRegisterResult(false);
+        setIsInfoTooltipOpen(true);
+      });
   }
   function handleLogin(userInfo) {
     authorization(userInfo)
-     .then((res) => {
-       localStorage.setItem('jwt', res.token);
-       setLoggedIn(true);
-       setUserEmail(userInfo.email);
-       setRegisterResult(true);
-       setIsInfoTooltipOpen(true)
-       history.push('/');  
-     })
-    .catch((err) => {
-      console.log(err);
-      setLoggedIn(false);
-      setRegisterResult(false);
-      setIsInfoTooltipOpen(true);
-    })
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        setLoggedIn(true);
+        setUserEmail(userInfo.email);
+        setRegisterResult(true);
+        setIsInfoTooltipOpen(true);
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoggedIn(false);
+        setRegisterResult(false);
+        setIsInfoTooltipOpen(true);
+      });
   }
   function handleLogOut() {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     setLoggedIn(false);
   }
   function handleCheckToken() {
-    const token = localStorage.getItem('jwt');
+    const token = localStorage.getItem("jwt");
     if (token) {
       checkToken(token)
-      .then((res) => {
-        if (res) {
-          setUserEmail(res.data.email);
-          setLoggedIn(true);
-          history.push('/');
-        }       
-      })
-      .catch((err) => {console.log(`Ошибка: ${err}`)});
+        .then((res) => {
+          if (res) {
+            setUserEmail(res.data.email);
+            setLoggedIn(true);
+            history.push("/");
+          }
+        })
+        .catch((err) => {
+          console.log(`Ошибка: ${err}`);
+        });
     }
-  };
+  }
 
   useEffect(() => {
     if (loggedIn) {
@@ -118,7 +120,7 @@ function App() {
 
   useEffect(() => {
     handleCheckToken();
-}, [])
+  }, []);
 
   function handleUpdateUser(data) {
     api
@@ -184,7 +186,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
-        <Header email={userEmail} logOut={handleLogOut}/>
+        <Header email={userEmail} logOut={handleLogOut} />
         <Switch>
           <ProtectedRoute exact path="/" loggedIn={loggedIn}>
             <Main
@@ -201,7 +203,7 @@ function App() {
             <LogIn logInOn={handleLogin} />
           </Route>
           <Route path="/signup">
-            <Register registerOn={handleRegister}/>
+            <Register registerOn={handleRegister} />
           </Route>
         </Switch>
         <EditProfilePopup
@@ -221,9 +223,9 @@ function App() {
           onUpdateAvatar={handleUpdateAvatar}
         />
         <InfoTooltip
-        isOpen={isInfoTooltipOpen}
-        onClose={closeAllPopups}
-        res={registerResult}
+          isOpen={isInfoTooltipOpen}
+          onClose={closeAllPopups}
+          res={registerResult}
         />
         <Footer />
       </div>
