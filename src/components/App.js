@@ -1,5 +1,5 @@
 import api from "../utils/api";
-import { BASE_URL, registration, authorization, checkToken } from "../utils/api";
+import {registration, authorization, checkToken } from "../utils/api";
 import Main from "./Main";
 import LogIn from "./LogIn";
 import Header from "./Header";
@@ -54,28 +54,44 @@ function App() {
     setSelectedCard(null);
     setIsInfoTooltipOpen(false);
   }
+  function handleRegister(registerInfo) {
+    registration(registerInfo)
+    .then(() => {
+      setRegisterResult(true);
+      setIsInfoTooltipOpen(true);
+    })
+    .catch((err) => {
+      console.log(err);
+      setRegisterResult(false);
+      setIsInfoTooltipOpen(true);
+    })
+  }
   function handleLogin(userInfo) {
     authorization(userInfo)
      .then((res) => {
        localStorage.setItem('jwt', res.token);
        setLoggedIn(true);
-       setUserEmail(userInfo.email); 
+       setUserEmail(userInfo.email);
+       setRegisterResult(true);
+       setIsInfoTooltipOpen(true)
        history.push('/');  
      })
     .catch((err) => {
       console.log(err);
       setLoggedIn(false);
       setRegisterResult(false);
-      setIsInfoTooltipOpen(true)
-
+      setIsInfoTooltipOpen(true);
     })
+  }
+  function handleLogOut() {
+    localStorage.removeItem('token');
+    setLoggedIn(false);
   }
   function handleCheckToken() {
     const token = localStorage.getItem('jwt');
     if (token) {
       checkToken(token)
       .then((res) => {
-        console.log(res)
         if (res) {
           setUserEmail(res.data.email);
           setLoggedIn(true);
@@ -168,7 +184,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
-        <Header email={userEmail} />
+        <Header email={userEmail} logOut={handleLogOut}/>
         <Switch>
           <ProtectedRoute exact path="/" loggedIn={loggedIn}>
             <Main
@@ -182,10 +198,10 @@ function App() {
             />
           </ProtectedRoute>
           <Route path="/signin">
-            <LogIn loginOn={handleLogin} />
+            <LogIn logInOn={handleLogin} />
           </Route>
           <Route path="/signup">
-            <Register />
+            <Register registerOn={handleRegister}/>
           </Route>
         </Switch>
         <EditProfilePopup

@@ -148,4 +148,4 @@ const api = new Api({
   },
 });
 export default api;
-export { BASE_URL, registration, authorization, checkToken };
+export { registration, authorization, checkToken };
