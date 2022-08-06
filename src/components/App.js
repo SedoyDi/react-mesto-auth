@@ -73,15 +73,11 @@ const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
         localStorage.setItem("jwt", res.token);
         setLoggedIn(true);
         setUserEmail(userInfo.email);
-        setRegisterResult(true);
-        setIsInfoTooltipOpen(true);
         history.push("/");
       })
       .catch((err) => {
         console.log(err);
         setLoggedIn(false);
-        setRegisterResult(false);
-        setIsInfoTooltipOpen(true);
       });
   }
   function handleLogOut() {
