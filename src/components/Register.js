@@ -14,7 +14,7 @@ function Register(props) {
   }
   function handleSubmit(evt) {
     evt.preventDefault();
-    props.registerOn({ password, email });
+    props.registerOn({ password: password, email: email });
   }
   return (
     <div className="register">
@@ -25,12 +25,14 @@ function Register(props) {
           placeholder="Email"
           className="register__input register__input_email_position"
           onChange={changeEmail}
+          value={email || ""}
         ></input>
         <input
           type="password"
           placeholder="Пароль"
           className="register__input register__input_password_position"
           onChange={changePassword}
+          value={password || ""}
         ></input>
         <button type="submit" className="register__submit-button">
           Зарегистрироваться

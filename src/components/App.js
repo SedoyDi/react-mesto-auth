@@ -1,5 +1,5 @@
 import api from "../utils/api";
-import { registration, authorization, checkToken } from "../utils/api";
+import { registration, authorization, checkToken } from "../utils/auth"
 import Main from "./Main";
 import LogIn from "./LogIn";
 import Header from "./Header";
@@ -18,13 +18,14 @@ import { useState, useEffect } from "react";
 function App() {
   const history = useHistory();
   const [cards, setCards] = useState([]);
+
   const [currentUser, setCurrentUser] = useState({
     name: "Пользователь",
     link: "",
     about: "О себе",
   });
   const [selectedCard, setSelectedCard] = useState(null);
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -93,7 +94,7 @@ function App() {
       checkToken(token)
         .then((res) => {
           if (res) {
-            setUserEmail(res.data.email);
+            setUserEmail(res.email);
             setLoggedIn(true);
             history.push("/");
           }

@@ -14,7 +14,7 @@ function LogIn(props) {
   function handleSubmit(evt) {
     evt.preventDefault();
     if (email || password) {
-      props.logInOn({ password, email });
+      props.logInOn({ password:password, email:email });
     }
   }
   return (
@@ -26,12 +26,14 @@ function LogIn(props) {
           placeholder="Email"
           className="login__input login__input_email_position"
           onChange={changeEmail}
+          value={email||""}
         ></input>
         <input
           type="password"
           placeholder="Пароль"
           className="login__input login__input_password_position"
           onChange={changePassword}
+          value={password||""}
         ></input>
         <button type="submit" className="login__submit-button">
           Войти
